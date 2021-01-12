@@ -16,6 +16,6 @@ jobs:
       - name: Install docker 
         run: sudo snap install docker
       - name: docker build
-        run: sudo docker build -f Dockerfile -t mypythonenv .  '
+        run: sudo docker build -f Dockerfile -t mypythonenv .
       - name: test docker build
         run: sudo docker images
