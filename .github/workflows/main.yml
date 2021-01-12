@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install snapd
-        run:  apt install snapd
+        run:  sudo apt install snapd
       - name: Install docker 
-        run: snap install docker
+        run: sudo snap install docker
