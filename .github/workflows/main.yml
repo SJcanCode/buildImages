@@ -14,6 +14,6 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: my-org/my-repo/my-image
+          registry: ghcr.io
+          repository: ghcr.io/${{ github.actor }}
           tag_with_ref: true
