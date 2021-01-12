@@ -17,5 +17,7 @@ jobs:
         run: sudo snap install docker
       - name: docker build
         run: sudo docker build -f Dockerfile -t mypythonenv . && sudo docker images
+      - name: change tag
+        run: sudo docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest %% sudo dicker images
       - name: test docker build
         run: sudo docker images
