@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install snapd
         run:  sudo apt install snapd
       - name: Install docker 
