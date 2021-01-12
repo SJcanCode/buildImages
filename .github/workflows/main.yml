@@ -1,0 +1,22 @@
+name: build
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test checkout
+        run: ls 
+      - name: Install snapd
+        run:  sudo apt install snapd
+      - name: Install docker 
+        run: sudo snap install docker
+      - name: docker build
+        run: sudo docker build -f Dockerfile -t mypythonenv . && sudo docker images
+      - name: change tag
+        run: sudo docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest
+      - name: test docker build
+        run: sudo docker images
