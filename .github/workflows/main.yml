@@ -11,7 +11,7 @@ jobs:
         run: ls 
       - name: test create file on desktop if it delete when end
         run: touch /home/appsx/Desktop/gitcreatedfile
-      - name: Install snapd
+      - name: Install snapd 
         run:  sudo apt install snapd
       - name: Install docker 
         run: sudo snap install docker
