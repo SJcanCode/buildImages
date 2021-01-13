@@ -10,14 +10,14 @@ jobs:
       - name: test checkout 
         run: ls 
       - name: Install snapd 
-        run:  sudo apt install snapd
+        run:  apt install snapd
       - name: Install docker 
-        run: sudo snap install docker
+        run: snap install docker
       - name: remove docker iamges if have
-        run: sudo docker rmi -f mypythonenv
+        run: docker rmi -f mypythonenv
       - name: docker build
-        run: sudo docker build -f Dockerfile -t mypythonenv . && sudo docker images
+        run: docker build -f Dockerfile -t mypythonenv . && sudo docker images
       - name: change tag
-        run: sudo docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest
+        run: docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest
       - name: test docker build
-        run: sudo docker images
+        run: docker images
