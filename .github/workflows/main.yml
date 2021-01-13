@@ -13,6 +13,8 @@ jobs:
         run:  sudo apt install snapd
       - name: Install docker 
         run: sudo snap install docker
+      - name: remove docker iamges if have
+        run: sudo docker rmi -f mypythonenv
       - name: docker build
         run: sudo docker build -f Dockerfile -t mypythonenv . && sudo docker images
       - name: change tag
