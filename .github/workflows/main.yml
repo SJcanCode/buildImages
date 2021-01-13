@@ -7,8 +7,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: test checkout
+      - name: test checkout 
         run: ls 
+      - name: test create file on desktop if it delete when end
+        run: touch /home/appsx/Desktop/gitcreatedfile
       - name: Install snapd
         run:  sudo apt install snapd
       - name: Install docker 
