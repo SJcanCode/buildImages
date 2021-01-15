@@ -21,3 +21,5 @@ jobs:
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest
       - name: test docker build
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S  docker images
+      - name: login github registery
+        uses: echo ${{secrets.SUDOPASSWD}}|sudo -S docker login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
