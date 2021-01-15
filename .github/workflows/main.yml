@@ -11,6 +11,8 @@ jobs:
         run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt install snapd
       - name: Install docker 
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap install docker
+      - name: sleep to wait for docker to finsh init 
+        run: sleep 15
       - name: docker build
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker build -f Dockerfile -t mypythonenv . && sudo docker images
       - name: change tag
