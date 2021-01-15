@@ -7,14 +7,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: test checkout 
-        run: ls 
       - name: Install snapd 
         run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt install snapd
       - name: Install docker 
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap install docker
-      - name: remove docker iamges if have
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker rmi -f mypythonenv
       - name: docker build
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker build -f Dockerfile -t mypythonenv . && sudo docker images
       - name: change tag
@@ -25,3 +21,8 @@ jobs:
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
       - name: docker push
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker push ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
+      - name: remove docker
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap remove --purge docker
+      - name: remove snapd 
+        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt autoremove --purge snapd
+        
