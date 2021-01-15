@@ -10,7 +10,7 @@ jobs:
       - name: test checkout 
         run: ls 
       - name: Install snapd 
-        run:  apt install snapd
+        run:  echo ${{secrets.SUDOPASSWD}}| sudo install snapd
       - name: Install docker 
         run: snap install docker
       - name: remove docker iamges if have
