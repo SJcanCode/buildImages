@@ -22,7 +22,7 @@ jobs:
       - name: docker push
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker push ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
       - name: remove docker
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap remove --purge docker
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap remove --purge docker -y
       - name: remove snapd 
-        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt autoremove --purge snapd
+        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt autoremove --purge snapd -y
         
