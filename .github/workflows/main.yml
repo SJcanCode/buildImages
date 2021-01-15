@@ -12,12 +12,12 @@ jobs:
       - name: Install snapd 
         run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt install snapd
       - name: Install docker 
-        run: snap install docker
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap install docker
       - name: remove docker iamges if have
-        run: docker rmi -f mypythonenv
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker rmi -f mypythonenv
       - name: docker build
-        run: docker build -f Dockerfile -t mypythonenv . && sudo docker images
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker build -f Dockerfile -t mypythonenv . && sudo docker images
       - name: change tag
-        run: docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker tag mypythonenv ghcr.io/sjcancode/mypythonenv:latest
       - name: test docker build
-        run: docker images
+        run: echo ${{secrets.SUDOPASSWD}}|sudo -S  docker images
