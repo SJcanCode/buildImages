@@ -28,3 +28,4 @@ jobs:
       - name: remove snapd 
         run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt autoremove --purge snapd -y
         
+        
