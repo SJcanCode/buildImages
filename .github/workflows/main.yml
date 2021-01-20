@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install snapd 
-        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt install snapd
+        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt install snapd -y
       - name: Install docker 
         run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap install docker
       - name: sleep to wait for docker to finsh init 
