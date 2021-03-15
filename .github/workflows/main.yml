@@ -13,8 +13,8 @@ jobs:
         run: sudo img build -f Dockerfile -t ghcr.io/${{secrets.GITHUBUSERNAME}}/test . && sudo img ls
       - name: login github registery
         run: sudo img login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
-      - name: docker push
-        run: sudo docker push ghcr.io/${{secrets.GITHUBUSERNAME}}/test:latest
+      - name: img push
+        run: sudo img push ghcr.io/${{secrets.GITHUBUSERNAME}}/test:latest
 #      - name: change tag
 #        run: sudo docker tag mypythonenv ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
 #      - name: test docker build
