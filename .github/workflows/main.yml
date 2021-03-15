@@ -10,7 +10,7 @@ jobs:
       - name: Install snapd 
         run:  sudo apt install snapd -y
       - name: img build
-        run: sudo img build -f Dockerfile -t mypythonenv . && sudo img ls
+        run: sudo img build -f Dockerfile -t ghcr.io/${{secrets.GITHUBUSERNAME}}/test . && sudo img ls
 #      - name: change tag
 #        run: sudo docker tag mypythonenv ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
 #      - name: test docker build
