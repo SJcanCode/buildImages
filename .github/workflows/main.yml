@@ -8,24 +8,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install snapd 
-        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt install snapd -y
-      - name: Install docker 
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap install docker
-      - name: sleep to wait for docker to finsh init 
-        run: sleep 15
-      - name: docker build
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker build -f Dockerfile -t mypythonenv . && sudo docker images
+        run:  sudo apt install snapd -y
+      - name: img build
+        run: sudo img build -f Dockerfile -t mypythonenv . && sudo img ls
       - name: change tag
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker tag mypythonenv ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
-      - name: test docker build
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S  docker images
-      - name: login github registery
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
-      - name: docker push
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S docker push ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
-      - name: remove docker
-        run: echo ${{secrets.SUDOPASSWD}}|sudo -S snap remove --purge docker
-      - name: remove snapd 
-        run:  echo ${{secrets.SUDOPASSWD}}| sudo -S apt autoremove --purge snapd -y
+#        run: sudo docker tag mypythonenv ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
+#      - name: test docker build
+#        run: sudo docker images
+#      - name: login github registery
+#        run: sudo docker login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
+#       - name: docker push
+#         run: sudo docker push ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
+#       - name: remove docker
+#         run: sudo snap remove --purge docker
+#       - name: remove snapd 
+#         run: sudo apt autoremove --purge snapd -y
         
         
