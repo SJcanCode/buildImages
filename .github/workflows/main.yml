@@ -7,28 +7,20 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: update apt
-        run: sudo apt update -y
-      - name: Install snapd 
-        run:  sudo apt install snapd -y
-      - name: Install docker 
-        run: sudo snap install docker
-      - name: sleep to wait for docker to finsh init 
-        run: sleep 15
-      - name: docker build
-        run: sudo docker build -f Dockerfile -t ghcr.io/${{secrets.GITHUBUSERNAME}}/test:v2 . && sudo docker images
+      - name: img pull nginx:1.14.2
+        run: sudo img pull nginx:1.14.2
+      - name: img change tag
+        run: sudo img tag nginx:1.14.2 ghcr.io/${{secrets.GITHUBUSERNAME}}/nginx:imgv1.14.2
       - name: login github registery
         run: sudo img login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
-      - name: docker push
-        run: sudo docker push ghcr.io/${{secrets.GITHUBUSERNAME}}/test:v2
-
-
+      - name: img push
+        run: sudo img push ghcr.io/${{secrets.GITHUBUSERNAME}}/nginx:imgv1.14.2
+   
 #      - name: img build
 #        run: sudo img build -f Dockerfile -t ghcr.io/${{secrets.GITHUBUSERNAME}}/test . && sudo img ls
 #      - name: login github registery
-#        run: sudo img login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
-#      - name: img push
-#        run: sudo img push ghcr.io/${{secrets.GITHUBUSERNAME}}/test:latest
+#        run: sudo img login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"        
+#***************************************************        
 #      - name: change tag
 #        run: sudo docker tag mypythonenv ghcr.io/${{secrets.GITHUBUSERNAME}}/mypythonenv:latest
 #      - name: test docker build
