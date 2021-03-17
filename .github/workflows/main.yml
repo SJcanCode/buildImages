@@ -7,14 +7,14 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: img pull nginx:1.14.2
-        run: sudo img pull nginx:1.14.2
-      - name: img change tag
-        run: sudo img tag nginx:1.14.2 ghcr.io/${{secrets.GITHUBUSERNAME}}/nginx:imgv1.14.2
+      - name: check current dir
+        run: pwd
+      - name: img build -t
+        run: sudo img build -t ghcr.io/${{secrets.GITHUBUSERNAME}}/customubuntu:imgv1 .
       - name: login github registery
         run: sudo img login ghcr.io -u="${{secrets.GITHUBUSERNAME}}" -p="${{secrets.GITHUBTOKEN}}"
       - name: img push
-        run: sudo img push ghcr.io/${{secrets.GITHUBUSERNAME}}/nginx:imgv1.14.2
+        run: sudo img push ghcr.io/${{secrets.GITHUBUSERNAME}}/customubuntu:imgv1
    
 #      - name: img build
 #        run: sudo img build -f Dockerfile -t ghcr.io/${{secrets.GITHUBUSERNAME}}/test . && sudo img ls
