@@ -12,7 +12,7 @@ jobs:
       - name: Install snapd 
         run:  sudo apt install snapd -y
       - name: Install docker 
-        run: sudo snap install dockerd
+        run: sudo snap install docker -y
       - name: sleep to wait for docker to finsh init 
         run: sleep 15
       - name: docker build
