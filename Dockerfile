@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM docker.io/library/ubuntu:18.04
 MAINTAINER sjcancode
 RUN apt-get update
 RUN apt-get install -y software-properties-common
